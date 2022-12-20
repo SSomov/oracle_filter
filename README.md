@@ -9,6 +9,10 @@ login `SYSTEM`
 
 pass `oracle`
 
+## file assignment
+
 oracle_connect - init connect database
+
 oracle_data_init - create fakedata
+
 oracle_export_csv - parse table
