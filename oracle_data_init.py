@@ -11,8 +11,8 @@ init_data2 = [('AAABBBCCC', 'text', 'text', 'text'),
 connection = oracle_connect.connection()
 cursor = connection.cursor()
 # create table
-cursor.execute("DROP TABLE TEST")
-cursor.execute("DROP TABLE TEST2")
+# cursor.execute("DROP TABLE TEST")
+# cursor.execute("DROP TABLE TEST2")
 connection.commit()
 cursor.execute(
     "CREATE TABLE TEST ( ID VARCHAR2(15) NOT NULL, PARAMETR_1 VARCHAR2(100) NOT NULL, PARAMETR_2 VARCHAR2(100) NOT NULL )")
