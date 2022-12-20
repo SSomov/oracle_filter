@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  oracle:
+    image: absolutapps/oracle-12c-ee
+    container_name: oracle
+    ports:
+    - 8080:8080
+    - 1521:1521
+    - 5500:5500
+    environment:
+      CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1
+      ORACLE_ALLOW_REMOTE: "true"
+    privileged: true
+    # volumes:
+    # - ./scripts/oracle-init.sh:/oracle-init.sh
