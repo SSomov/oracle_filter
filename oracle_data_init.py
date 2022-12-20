@@ -19,7 +19,7 @@ cursor.execute(
 cursor.executemany("INSERT INTO TEST values (:1, :2, :3)", init_data)
 cursor.execute(
     "CREATE TABLE TEST2 ( ID2 VARCHAR2(15) NOT NULL, PARAMETR_1 VARCHAR2(100) NOT NULL, PARAMETR_2 VARCHAR2(100) NOT NULL, PARAMETR_3 VARCHAR2(100) NOT NULL )")
-cursor.executemany("INSERT INTO TEST2 values (:1, :2, :3, :3)", init_data2)
+cursor.executemany("INSERT INTO TEST2 values (:1, :2, :3, :4)", init_data2)
 connection.commit()
 # print(cursor.execute("SELECT * FROM ALL_TABLES"))
 cursor.close()
