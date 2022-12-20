@@ -17,11 +17,19 @@ def connection():
     return connection
 
 
+def import_csv(filename: str) -> None:
+    with open(filename, "r", encoding="utf-8") as read_obj:
+        csv_reader = csv.reader(read_obj)
+        list_of_csv = list(csv_reader)
+    return list_of_csv
+
+
 def export_csv(data: list, filename: str) -> None:
     """export list of lists to csv
 
     Args:
         data (list): list of lists
+        filename (str): name file export
     """
     with open(filename, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
@@ -45,16 +53,20 @@ def processing(query: cx_Oracle.Cursor) -> list:
     return query_cropped_id
 
 
+query_data = import_csv("querytable.csv")
 connection = connection()
 cursor = connection.cursor()
-# cursor.arraysize = SELECT_SIZE
-query_filter_sql: str = "SELECT * FROM TEST ORDER BY ID"
-query_filter = cursor.execute(query_filter_sql)
-export_csv(query_filter, "raw_data.csv")
-query_filter = cursor.execute(query_filter_sql)
-list_cropped_id = processing(query_filter)
-export_csv(list_cropped_id, "querytable.csv")
+# # cursor.arraysize = SELECT_SIZE
 
+new_list_add_data = []
+if len(query_data) > 0:
+    for row_list in query_data:
+        query = cursor.execute(f"SELECT * FROM TEST2 WHERE ID2='{str(row_list[0])}'")
+        for row in query:
+            # row[1:] - remove first column ID in query 
+            new_list_add_data.append(row_list + list(row[1:]))
+
+export_csv(new_list_add_data, "result.csv")
 
 cursor.close()
 connection.close()
