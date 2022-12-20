@@ -13,8 +13,6 @@ pass `oracle`
 
 ## file assignment
 
-oracle_connect - init connect database
-
 oracle_data_init - create fakedata
 
 oracle_export_query - save csv query table (raw_data.csv, querytable.csv)
