@@ -17,6 +17,6 @@ oracle_connect - init connect database
 
 oracle_data_init - create fakedata
 
-oracle_export_query - save csv query table
+oracle_export_query - save csv query table (raw_data.csv, querytable.csv)
 
-oracle_export_join - load csv querytable, join with new table
+oracle_export_join - load csv querytable, join with new table (result.csv)

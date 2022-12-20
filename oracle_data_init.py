@@ -8,7 +8,20 @@ init_data2 = [('AAABBBCCC', 'text', 'text', 'text'),
               ('AAABBBEEE', 'text', 'text', 'text'),
               ('AAABBBDDD', 'text', 'text', 'text')]
 
-connection = oracle_connect.connection()
+IP: str = "localhost"
+PORT: int = 1521
+SID: str = "ORCL"
+USER: str = "system"
+PWD: str = "oracle"
+
+
+def connection():
+    dsn_tns = cx_Oracle.makedsn(IP, PORT, service_name=SID)
+    connection = cx_Oracle.connect(USER, PWD, dsn_tns, encoding="UTF-8")
+    print(f"oracle database {str(connection.version)}")
+    return connection
+
+connection = connection()
 cursor = connection.cursor()
 # create table
 # cursor.execute("DROP TABLE TEST")
