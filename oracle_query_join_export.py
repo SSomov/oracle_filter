@@ -83,6 +83,7 @@ con_one.close()
 query_data = list_cropped_id
 
 for con_other in CONNECT_OTHER:
+    sid = con_other["sid"]
     con_other = connection(**con_other)
     cursor = con_other.cursor()
     # # cursor.arraysize = SELECT_SIZE
@@ -97,6 +98,7 @@ for con_other in CONNECT_OTHER:
             for row in query:
                 # row[1:] - remove first column ID in query
                 counter=+1
+                print(row)
                 if len(row) > 0:
                     query_null = False
                     new_list_add_data.append(row_list + list(row[1:]))
@@ -107,7 +109,7 @@ for con_other in CONNECT_OTHER:
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
         else:
-            print("Неверный запрос или в бд нет данных")
+            print(f"Неверный запрос или в бд {sid} нет данных")
     cursor.close()
     con_other.close()
 
