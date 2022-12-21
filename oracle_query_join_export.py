@@ -89,8 +89,9 @@ for con_other in CONNECT_OTHER:
     new_list_add_data = []
     if len(query_data) > 0:
         for row_list in query_data:
-            query = cursor.execute(
-                f"SELECT * FROM TEST2 WHERE ID2='{str(row_list[0])}'")
+            query_sql = f"SELECT * FROM TEST2 WHERE ID2='{str(row_list[0])}'"
+            print(query_sql)
+            query = cursor.execute(query_sql)
             for row in query:
                 # row[1:] - remove first column ID in query
                 if len(row) > 0:
