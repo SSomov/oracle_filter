@@ -96,6 +96,8 @@ for con_other in CONNECT_OTHER:
                 # row[1:] - remove first column ID in query
                 if len(row) > 0:
                     new_list_add_data.append(row_list + list(row[1:]))
+                else:
+                    new_list_add_data.append(row_list)
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
         else:
