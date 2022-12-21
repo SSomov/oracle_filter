@@ -91,7 +91,8 @@ for con_other in CONNECT_OTHER:
             for row in query:
                 # row[1:] - remove first column ID in query
                 new_list_add_data.append(row_list + list(row[1:]))
-        query_data = new_list_add_data
+        if len(new_list_add_data) > 0:
+            query_data = new_list_add_data
 
 export_csv(query_data, "result.csv")
 
