@@ -94,6 +94,8 @@ for con_other in CONNECT_OTHER:
                     new_list_add_data.append(row_list + list(row[1:]))
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
+        else:
+            print("Неверный запрос или в бд нет данных")
 
 export_csv(query_data, "result.csv")
 
