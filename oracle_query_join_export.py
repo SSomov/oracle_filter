@@ -90,7 +90,8 @@ for con_other in CONNECT_OTHER:
                 f"SELECT * FROM TEST2 WHERE ID2='{str(row_list[0])}'")
             for row in query:
                 # row[1:] - remove first column ID in query
-                new_list_add_data.append(row_list + list(row[1:]))
+                if len(row) > 0:
+                    new_list_add_data.append(row_list + list(row[1:]))
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
 
