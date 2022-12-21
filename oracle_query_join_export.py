@@ -92,12 +92,14 @@ for con_other in CONNECT_OTHER:
             query_sql = f"SELECT * FROM TEST2 WHERE ID2='{str(row_list[0])}'"
             print(query_sql)
             query = cursor.execute(query_sql)
+            query_null = True
             for row in query:
                 # row[1:] - remove first column ID in query
                 if len(row) > 0:
+                    query_null = False
                     new_list_add_data.append(row_list + list(row[1:]))
-                else:
-                    new_list_add_data.append(row_list)
+            if query_null:
+                new_list_add_data.append(row_list)
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
         else:
