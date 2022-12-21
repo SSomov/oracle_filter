@@ -2,6 +2,7 @@ import cx_Oracle
 import csv
 
 SELECT_SIZE = 5000
+DELIMITER_CSV = ';'
 
 IP: str = "localhost"
 PORT: int = 1521
@@ -32,7 +33,7 @@ def export_csv(data: list, filename: str) -> None:
         filename (str): name file export
     """
     with open(filename, "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
+        writer = csv.writer(csvfile, delimiter = DELIMITER_CSV)
         writer.writerows(data)
 
 
