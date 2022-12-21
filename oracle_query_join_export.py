@@ -4,7 +4,7 @@ import csv
 SELECT_SIZE = 5000
 DELIMITER_CSV = ';'
 
-NOT_SAVE_ROW = True
+SAVE_ROW = True
 
 CONNECT_QUERY = {'host': "localhost", 'port': 1521,
                  'sid': "orcl", 'user': "system", 'pwd': "oracle"}
@@ -106,7 +106,7 @@ for con_other in CONNECT_OTHER:
                     new_list_add_data.append(row_list + list(row[1:]))
             if counter > 1:
                 print(f"Запрос вернул больше одного - {str(counter)}")
-            if query_null and NOT_SAVE_ROW:
+            if query_null and SAVE_ROW:
                 new_list_add_data.append(row_list)
         if len(new_list_add_data) > 0:
             query_data = new_list_add_data
