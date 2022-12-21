@@ -7,7 +7,8 @@ DELIMITER_CSV = ';'
 CONNECT_QUERY = {'host': "localhost", 'port': 1521,
                  'sid': "orcl", 'user': "system", 'pwd': "oracle"}
 CONNECT_OTHER = [
-    {'host': "localhost", 'port': 1521, 'sid': "orcl", 'user': "system", 'pwd': "oracle"},
+    {'host': "localhost", 'port': 1521, 'sid': "orcl",
+        'user': "system", 'pwd': "oracle"},
     {'host': "localhost", 'port': 1521, 'sid': "orcl", 'user': "system", 'pwd': "oracle"}]
 
 
@@ -76,6 +77,8 @@ query_filter = cursor.execute(query_filter_sql)
 list_cropped_id = processing(query_filter)
 export_csv(list_cropped_id, "querytable.csv")
 
+cursor.close()
+con_one.close()
 
 query_data = list_cropped_id
 
@@ -96,8 +99,7 @@ for con_other in CONNECT_OTHER:
             query_data = new_list_add_data
         else:
             print("Неверный запрос или в бд нет данных")
+    cursor.close()
+    con_other.close()
 
 export_csv(query_data, "result.csv")
-
-cursor.close()
-con_other.close()
